@@ -111,4 +111,63 @@ if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
     }
 endif;
 add_action( 'customize_register', 'llorix_one_lite_child_customize_register');
+    
+/*
+ * Contact section display content.
+ *
+ * @param array $llorix_one_lite_contact_info_item_decoded Section content.
+ *
+ * This is a modified version of "llorix_one_lite_contanct_content" function, including the following changes:
+ *
+ * 1. All contact info links are opened in new browser tabs, except mailto links.
+ * 2. If no link is provided for a contact item, the item is dispalyed as simple text not hyperlink.
+ * 3. The number of grid columns of the section is extended to 4 in order to accommodate 4 contact items in one row.
+ */
+if ( !function_exists( 'llorix_one_lite_child_contact_content' ) ):
+    function llorix_one_lite_child_contact_content( $llorix_one_lite_contact_info_item_decoded ) { ?>
+
+        <div class="section-overlay-layer">
+            <div class="container">
+                <!-- CONTACT INFO -->
+                <div class="row contact-links">
+                    <?php
+                    if ( ! empty( $llorix_one_lite_contact_info_item_decoded ) ) {
+                        foreach ( $llorix_one_lite_contact_info_item_decoded as $llorix_one_contact_item ) {
+                            $link = ( ! empty( $llorix_one_contact_item->link ) ? apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_contact_item->link, 'Contact section' ) : '' );
+                            $icon = ( ! empty( $llorix_one_contact_item->icon_value ) ? apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_contact_item->icon_value, 'Contact section' ) : '' );
+                            $text = ( ! empty( $llorix_one_contact_item->text ) ? apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_contact_item->text, 'Contact section' ) : '' );
+            
+                            if ( ! empty( $icon ) || ! empty( $text ) ) { ?>
+                                <div class="col-sm-3 contact-link-box col-xs-12">
+                                    <?php
+                                    if ( ! empty( $icon ) ) { ?>
+                                        <div class="icon-container">
+                                            <i class="fa <?php echo esc_attr( $icon ); ?> colored-text"></i>
+                                        </div>
+                                    <?php
+                                    }
+                                    if ( ! empty( $text ) ) {
+                                        if ( ! empty( $link ) ) { ?>
+                                            <a <?php echo ( ! empty( $link ) ? 'href="' . esc_url( $link ) . '"' : '' );
+                                                echo ( ( substr( $link, 0, 7 ) === 'mailto:' ) ? '' : 'target="_blank"' )?> class="strong">
+                                                <?php echo html_entity_decode( $text ); ?>
+                                            </a>
+                                    <?php
+                                        }
+                                        else { ?>
+                                            <p class="strong"><?php echo html_entity_decode( $text ); ?></p>
+                                    <?php
+                                        }
+                                    } ?>
+                                </div>
+                        <?php
+                            }
+                        }
+                    } ?>
+                </div><!-- .contact-links -->
+            </div><!-- .container -->
+        </div>
+<?php
+    }
+endif;
 ?>
