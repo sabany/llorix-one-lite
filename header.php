@@ -201,7 +201,7 @@ echo esc_attr( $fixedheader ); }
 
 					$llorix_one_lite_logo = get_theme_mod( 'llorix_one_lite_logo' );
 					$llorix_one_lite_logo = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_logo, 'Header Logo' );
-
+                    $llorix_one_lite_child_both_logo_and_title = get_theme_mod( 'llorix_one_lite_child_both_logo_and_title' );
 
 					if ( ! empty( $llorix_one_lite_logo ) ) :
 
@@ -210,8 +210,16 @@ echo esc_attr( $fixedheader ); }
 						echo '<img src="' . esc_url( $llorix_one_lite_logo ) . '" alt="' . get_bloginfo( 'title' ) . '">';
 
 						echo '</a>';
-
-						echo '<div class="header-logo-wrap text-header llorix_one_lite_only_customizer">';
+                        
+                        if ( isset( $llorix_one_lite_child_both_logo_and_title ) && ( $llorix_one_lite_child_both_logo_and_title == 1 ) ) :
+                        
+                            echo '<div class="header-logo-wrap text-header">';
+                        
+                        else :
+                        
+                            echo '<div class="header-logo-wrap text-header llorix_one_lite_only_customizer">';
+                        
+                        endif;
 
 						echo '<h1 itemprop="headline" id="site-title" class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a></h1>';
 
@@ -238,6 +246,7 @@ echo esc_attr( $fixedheader ); }
 						echo '<p itemprop="description" id="site-description" class="site-description">' . get_bloginfo( 'description' ) . '</p>';
 
 						echo '</div>';
+                        
 					endif;
 
 					?>

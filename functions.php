@@ -37,6 +37,25 @@ add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 20 );
 if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
     function llorix_one_lite_child_customize_register( $wp_customize ) {
 
+        /* APPEARANCE */
+        /* General Options */
+        
+        /* Show both logo and title */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_both_logo_and_title', array(
+                'sanitize_callback' => 'llorix_one_lite_sanitize_text',
+            )
+        );
+        
+        $wp_customize->add_control(
+            'llorix_one_lite_child_both_logo_and_title', array(
+                'type'        => 'checkbox',
+                'label'       => esc_html__( 'Show both logo and site title on the header?', 'llorix-one-lite-child' ),
+                'section'     => 'llorix_one_lite_appearance_general',
+                'priority'    => 3,
+            )
+        );
+        
         /* HEADER */
         /* Very Top Header */
 
