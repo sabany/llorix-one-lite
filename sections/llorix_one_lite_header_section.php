@@ -138,7 +138,6 @@ if ( ! empty( $llorix_one_lite_header_logo ) || ! empty( $llorix_one_lite_header
 
 <?php
 	}// End if().
-?>
 } else {
     
  /* Display the slider section */
