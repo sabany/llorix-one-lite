@@ -37,6 +37,8 @@ add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 20 );
 if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
     function llorix_one_lite_child_customize_register( $wp_customize ) {
 
+        require_once( trailingslashit( get_template_directory() ) . 'inc/customizer-repeater/class/customizer-repeater-control.php' );
+        
         /* APPEARANCE */
         /* General Options */
         
@@ -88,6 +90,76 @@ if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
                 'label'    => esc_html__( 'Fax number', 'llorix-one-lite-child' ),
                 'section'  => 'llorix_one_lite_very_top_header_content',
                 'priority' => 4,
+            )
+        );
+
+        /* FRONTPAGE SECTIONS */
+        /* Slider Section */
+        
+        $wp_customize->add_section(
+            'llorix_one_lite_child_slider_section', array(
+                'title'           => esc_html__( 'Slider section', 'llorix-one-lite-child' ),
+                'priority'        => 30,
+                'panel'           => 'llorix_one_lite_front_page_sections',
+                'active_callback' => 'llorix_one_lite_show_on_front',
+            )
+        );
+
+        /* Slider show/hide */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_slider_show', array(
+                'sanitize_callback' => 'llorix_one_lite_sanitize_text',
+                'transport'         => 'postMessage',
+            )
+        );
+
+        $wp_customize->add_control(
+            'llorix_one_lite_child_slider_show', array(
+                'type'     => 'checkbox',
+                'label'    => esc_html__( 'Enable the slider?', 'llorix-one-lite-child' ),
+                'section'  => 'llorix_one_lite_child_slider_section',
+                'priority' => 1,
+            )
+        );
+
+        /* Slider delay */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_slider_delay', array(
+                'default'           => 5,
+            )
+        );
+        
+        $wp_customize->add_control(
+            'llorix_one_lite_child_slider_delay', array(
+                'type'     => 'number',
+                'label'    => esc_html__( 'Delay between slides in seconds', 'llorix-one-lite-child' ),
+                'section'  => 'llorix_one_lite_child_slider_section',
+                'priority' => 2,
+                'input_attrs' => array(
+                    'min'  => 1,
+                    'max'  => 10,
+                    'step' => 0.5,
+                )
+            )
+        );
+
+        /* Slider content */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_slider_content', array(
+                'sanitize_callback' => 'llorix_one_lite_sanitize_repeater',
+            )
+        );
+        
+        $wp_customize->add_control(
+            new Llorix_One_Lite_General_Repeater(
+                $wp_customize, 'llorix_one_lite_child_slider_content', array(
+                    'label'                         => esc_html__( 'Add new slider page', 'llorix-one-lite-child' ),
+                    'section'                       => 'llorix_one_lite_child_slider_section',
+                    'priority'                      => 10,
+                    'llorix_one_lite_image_control' => true,
+                    'llorix_one_lite_title_control' => true,
+                    'llorix_one_lite_subtitle_control' => true,
+                )
             )
         );
 

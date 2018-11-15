@@ -5,6 +5,40 @@ Version: 0.1.0.1531005310
 Updated: 2018-07-08 03:45:10
 -----------------------------------------*/
 
+/*---------------------------------------
+   SECTION: HOME / HEADER
+-----------------------------------------*/
+
+/* SLIDER */
+.img-responsive {
+    	width:100%;
+    	height:auto;
+}
+
+#myCarousel i {
+    	font-size: 50px;
+    	margin-top: 115%;
+}
+
+.carousel-caption {
+    	top: 30% !important;
+    	padding-top: 20px;
+    	text-shadow: none !important;
+}
+
+.carousel-caption h2 {
+    	font-size: 2.4rem !important;
+    	font-weight: bold;
+    	line-height: 80px;
+    	margin-bottom: 20px;
+    	box-shadow: none !important;
+}
+
+.carousel-caption p {
+    	background-color: rgba(51, 51, 51, 0.64);
+    	padding: 15px;
+}
+
 /* STICKY NAVIGATION AND LOGO */
 header .navbar-brand {
     	float: left;
