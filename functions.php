@@ -90,6 +90,24 @@ if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
                 'priority' => 4,
             )
         );
+
+        /* FOOTER */
+
+        /* Footer bottom note */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_footer_bottom_note', array(
+                'default'           => esc_html__( 'Llorix One Lite powered by WordPress', 'llorix-one-lite-child' ),
+                'sanitize_callback' => 'llorix_one_lite_sanitize_text',
+            )
+        );
+        
+        $wp_customize->add_control(
+            'llorix_one_lite_child_footer_bottom_note', array(
+                'label'    => esc_html__( 'Bottom note', 'llorix-one-lite-child' ),
+                'section'  => 'llorix_one_lite_footer_section',
+                'priority' => 3,
+            )
+        );
     }
 endif;
 add_action( 'customize_register', 'llorix_one_lite_child_customize_register');

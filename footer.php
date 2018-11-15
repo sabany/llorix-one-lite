@@ -89,8 +89,16 @@
 					</div><!-- .footer-bottom-wrap -->
 
 
-			<?php echo apply_filters( 'llorix_one_plus_footer_text_filter', '<div class="powered-by"><a href="http://themeisle.com/themes/llorix-one/" rel="nofollow">Llorix One Lite </a>' . esc_html__( 'powered by', 'llorix-one-lite' ) . ' <a href="http://wordpress.org/" rel="nofollow">' . esc_html__( 'WordPress', 'llorix-one-lite' ) . '</a></div>' ); ?>
+			<?php
+                $llorix_one_lite_child_footer_bottom_note = get_theme_mod( 'llorix_one_lite_child_footer_bottom_note', esc_html__( 'Llorix One Lite powered by WordPress', 'llorix-one-lite-child' ) );
+                $llorix_one_lite_child_footer_bottom_note = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_child_footer_bottom_note, 'Footer Bottom Note' );
 
+                if ( ! empty( $llorix_one_lite_child_footer_bottom_note ) ) {
+					echo apply_filters( 'llorix_one_plus_footer_text_filter', '<div class="powered-by">' . esc_attr( $llorix_one_lite_child_footer_bottom_note ) . '</div>' );
+                } elseif ( isset( $wp_customize ) ) {
+					echo apply_filters( 'llorix_one_plus_footer_text_filter','<div class="powered-by" llorix_one_lite_only_customizer"></div>' );
+                }
+            ?>
 
 		</div><!-- container -->
 
