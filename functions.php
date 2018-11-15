@@ -28,3 +28,50 @@ endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 20 );
 
 // END ENQUEUE PARENT ACTION
+
+/*
+ * Add additional settings and controls to the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+if ( !function_exists( 'llorix_one_lite_child_customize_register' ) ):
+    function llorix_one_lite_child_customize_register( $wp_customize ) {
+
+        /* HEADER */
+        /* Very Top Header */
+
+        /* Fax number - text */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_very_top_header_fax_text', array(
+                'default'           => esc_html__( 'Fax to: ', 'llorix-one-lite-child' ),
+                'sanitize_callback' => 'llorix_one_lite_sanitize_text',
+            )
+        );
+        
+        $wp_customize->add_control(
+            'llorix_one_lite_child_very_top_header_fax_text', array(
+                'label'    => esc_html__( 'Text before the fax number', 'llorix-one-lite-child' ),
+                'section'  => 'llorix_one_lite_very_top_header_content',
+                'priority' => 4,
+            )
+        );
+        
+        /* Fax number */
+        $wp_customize->add_setting(
+            'llorix_one_lite_child_very_top_header_fax', array(
+                'default'           => esc_html__( '(+9) 0999.600.300', 'llorix-one-lite-child' ),
+                'sanitize_callback' => 'llorix_one_lite_sanitize_text',
+            )
+        );
+        
+        $wp_customize->add_control(
+            'llorix_one_lite_child_very_top_header_fax', array(
+                'label'    => esc_html__( 'Fax number', 'llorix-one-lite-child' ),
+                'section'  => 'llorix_one_lite_very_top_header_content',
+                'priority' => 4,
+            )
+        );
+    }
+endif;
+add_action( 'customize_register', 'llorix_one_lite_child_customize_register');
+?>

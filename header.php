@@ -109,13 +109,29 @@ echo esc_attr( $fixedheader ); }
 						$llorix_one_lite_very_top_header_phone      = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_very_top_header_phone, 'Very Top Header' );
 						$llorix_one_lite_very_top_header_phone_text = get_theme_mod( 'llorix_one_lite_very_top_header_phone_text', esc_html__( 'Call us: ', 'llorix-one-lite' ) );
 						$llorix_one_lite_very_top_header_phone_text = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_very_top_header_phone_text, 'Very Top Header' );
+						$llorix_one_lite_child_very_top_header_fax  = get_theme_mod( 'llorix_one_lite_child_very_top_header_fax', esc_html__( '(+9) 0999.600.300', 'llorix-one-lite-child' ) );
+						$llorix_one_lite_child_very_top_header_fax  = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_child_very_top_header_fax, 'Very Top Header' );
+						$llorix_one_lite_child_very_top_header_fax_text = get_theme_mod( 'llorix_one_lite_child_very_top_header_fax_text', esc_html__( 'Fax to: ', 'llorix-one-lite-child' ) );
+						$llorix_one_lite_child_very_top_header_fax_text = apply_filters( 'llorix_one_lite_translate_single_string', $llorix_one_lite_child_very_top_header_fax_text, 'Very Top Header' );
 
-
-						if ( ! empty( $llorix_one_lite_very_top_header_phone ) || ! empty( $llorix_one_lite_very_top_header_phone_text ) ) {
-							echo '<div class="very-top-left">';
-							echo $llorix_one_lite_very_top_header_phone_text;
-							echo '<span>' . wp_kses( $llorix_one_lite_very_top_header_phone, 'post', $allowed_protocols ) . '</span>';
-							echo '</div>';
+                            
+						if ( ! empty( $llorix_one_lite_very_top_header_phone ) || ! empty( $llorix_one_lite_very_top_header_phone_text ) ||
+						     ! empty( $llorix_one_lite_child_very_top_header_fax ) || ! empty( $llorix_one_lite_child_very_top_header_fax_text ) ) {
+						    
+						    echo '<div class="very-top-left">';
+						    /* Phone Number */
+						    if ( ! empty( $llorix_one_lite_very_top_header_phone ) || ! empty( $llorix_one_lite_very_top_header_phone_text ) ) {
+						        echo $llorix_one_lite_very_top_header_phone_text;
+						        echo '<span>' . wp_kses( $llorix_one_lite_very_top_header_phone, 'post', $allowed_protocols ) . '</span>';
+						    }
+						    echo '&emsp;';
+						    /* Fax Number */
+						    if ( ! empty( $llorix_one_lite_child_very_top_header_fax ) || ! empty( $llorix_one_lite_child_very_top_header_fax_text ) ) {
+ 						        echo $llorix_one_lite_child_very_top_header_fax_text;
+						        echo '<span>' . wp_kses( $llorix_one_lite_child_very_top_header_fax, 'post', $allowed_protocols ) . '</span>';
+						    }
+						    echo '</div>';
+						    
 						} elseif ( isset( $wp_customize ) ) {
 							echo '<div class="very-top-left llorix_one_lite_only_customizer"><span></span></div>';
 						}
