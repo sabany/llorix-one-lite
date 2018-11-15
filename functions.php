@@ -23,6 +23,8 @@ if ( !function_exists( 'child_theme_configurator_css' ) ):
     function child_theme_configurator_css() {
         wp_enqueue_style( 'chld_thm_cfg_ext1', trailingslashit( get_template_directory_uri() ) . 'rtl.css' );
         wp_enqueue_style( 'chld_thm_cfg_child', trailingslashit( get_stylesheet_directory_uri() ) . 'style.css', array( 'chld_thm_cfg_parent','llorix-one-lite-style' ) );
+        
+        wp_enqueue_style( 'chld_thm_cfg_responsive_leyouts', trailingslashit( get_stylesheet_directory_uri() ) . 'css/responsive-leyouts.css', array() );
     }
 endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 20 );

@@ -1,0 +1,49 @@
+@media (max-width: 991px) {
+
+    	/* SLIDER */
+    	.carousel-caption h2 {
+    	    	font-size: 30px !important;
+    	    	line-height: 60px;
+	}
+
+    	.carousel-indicators {
+    	    	bottom: 0 !important;
+	}
+	
+    	.carousel-caption p {
+    	    	padding: 8px;
+    	    	font-size: 13px;
+    	}
+}
+
+@media (max-width: 767px) {
+
+    	/* SLIDER */
+    	.carousel-caption {
+    	    	top: 0% !important;
+    	    	right: 15% !important;
+    	    	left: 15% !important;
+	}
+
+    	#myCarousel i {
+    	    	margin-top: 70%;
+	}
+}
+
+@media (max-width: 600px) {
+
+    	/* SLIDER */
+    	.carousel-caption h2 {
+    	    	font-size: 23px !important;
+    	    	line-height: 40px;
+	}
+}
+
+@media (max-width: 450px) {
+
+    	/* SLIDER */
+    	.carousel-caption,
+    	.carousel-indicators {
+    	    	display:none;
+	}
+}
