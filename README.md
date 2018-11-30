@@ -2,13 +2,13 @@
 
 ## Description
 
-Description: This is a child theme of Llorix One Lite with the following additional features and improvements:
+This is a child theme of Llorix One Lite with the following additional features and improvements:
 
-	1. A customizable fax number beside the phone number on the very top header.
-	2. An option to display both the site logo and the site title on the top header.
-	3. A setting for customizing the note at the bottom of the footer.
-	4. Improved behaviour of contact links in the contact info section.
-	5. A customizable photo slider with responsive behaviour on the frontpage header.
+1. A customizable fax number beside the phone number on the very top header.
+2. An option to display both the site logo and the site title on the top header.
+3. A setting for customizing the note at the bottom of the footer.
+4. Improved behaviour of contact links in the contact info section.
+5. A customizable photo slider with responsive behaviour on the frontpage header.
 
 # Llorix One Lite
 
